@@ -70,6 +70,11 @@ const collectEmployees = function () {
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
 
+  // if the array is empty, we simply exit and dont print anything in the console as it returns an error while trying to access the undefined array
+  if (employeesArray.length === 0) {
+    return;
+  }
+
   //initializing the salary to 0 to begin with
   let totalSalary = 0;
 
@@ -91,6 +96,11 @@ const displayAverageSalary = function (employeesArray) {
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
+
+  //if the array is empty, we simply exit and dont print anything in the console because it tries to access the firstname and lastname property which will be undefined and results in error
+  if (employeesArray.length === 0) {
+    return;
+  }
 
   //getting random value between 0(inclusive) to the length of array(exclusive), using "Math.random()" method and rounding the value down using "Math.floor() for more accuracy"
   let randomEmployeeIndex = Math.floor(Math.random() * employeesArray.length);
