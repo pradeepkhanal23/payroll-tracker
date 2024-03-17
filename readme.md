@@ -15,13 +15,13 @@ Check out the live demo <a href="https://pradeepkhanal23.github.io/payroll-track
 
 ## Screenshots
 
-![Hero Page](./assets/screenshots/tracker-main.png)
+![Main Page](./assets/screenshots/tracker-main.png)
 _Description: Main UI with the add employee button and the table with the employees details._
 
-![Works Page](./assets/screenshots/tracker-console.png)
+![Console View](./assets/screenshots/tracker-console.png)
 _Description: Console view of the employee details with average salary and randomly selected employee log._
 
-![Footer Page](./assets/screenshots/tracker-main-plus-console.png)
+![Main and Console view](./assets/screenshots/tracker-main-plus-console.png)
 _Description: Combined view of the table and console._
 
 ## Getting Started
