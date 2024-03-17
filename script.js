@@ -69,6 +69,23 @@ const collectEmployees = function () {
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
+
+  //initializing the salary to 0 to begin with
+  let totalSalary = 0;
+
+  //using for loop to access each object in the array and used dot notation to get the specific salary property from the employee object
+  for (i = 0; i < employeesArray.length; i++) {
+    //calculating the average by diving the total salaries of all the employess by the total number of employee(s)
+    totalSalary =
+      totalSalary + employeesArray[i].salary / employeesArray.length;
+  }
+
+  //printing the message in the console using template string and also, used ".toFixed()"  method to have an extra 2 digit decimal point value for better approximation
+  console.log(
+    `The average employee salary between our ${
+      employeesArray.length
+    } employee(s) is $${totalSalary.toFixed(2)}`
+  );
 };
 
 // Select a random employee
