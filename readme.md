@@ -11,7 +11,18 @@ Employee Payroll Tracker is a web application designed to help businesses manage
 
 ## Live Demo
 
-Check out the live demo [here](https://pradeepkhanal23.github.io/payroll-tracker/).
+Check out the live demo <a href="https://pradeepkhanal23.github.io/payroll-tracker/" target="_blank">Here.</a>
+
+## Screenshots
+
+![Hero Page](./assets/screenshots/tracker-main.png)
+_Description: Main UI with the add employee button and the table with the employees details._
+
+![Works Page](./assets/screenshots/tracker-console.png)
+_Description: Console view of the employee details with average salary and randomly selected employee log._
+
+![Footer Page](./assets/screenshots/tracker-main-plus-console.png)
+_Description: Combined view of the table and console._
 
 ## Getting Started
 
@@ -25,7 +36,7 @@ Check out the live demo [here](https://pradeepkhanal23.github.io/payroll-tracker
 2. Enter the first name, last name, and salary of each employee when prompted.
 3. Optionally, add more employees or cancel to finish.
 4. View the average salary and a randomly selected employee in the console.
-5. The sorted employee roster will be displayed in the web page.
+5. The sorted employee (based on the lastname) roster will be displayed in the web page.
 
 ## Technologies Used
 
