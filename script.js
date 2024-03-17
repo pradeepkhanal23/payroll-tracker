@@ -4,6 +4,66 @@ const addEmployeesBtn = document.querySelector("#add-employees-btn");
 // Collect employee data
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
+
+  // initially setting the addNextEmployee value to true to enter the while loop
+  let addNextEmployee = true;
+
+  //initializing the employess array to empty before we start collecting data of the employees
+  let employees = [];
+
+  while (addNextEmployee) {
+    // taking user input for firstname
+    let firstName = prompt("Enter first name");
+
+    //if user cancels without giving any input, we change the "addNextEmployee" value to false and return the empty array to prevent the error when the other function tries to loop over the array
+    if (!firstName) {
+      addNextEmployee = false;
+      return employees;
+    }
+
+    let lastName = prompt("Enter last name");
+    if (!lastName) {
+      addNextEmployee = false;
+      return employees;
+    }
+    let salary = prompt("Enter the salary");
+    if (!salary) {
+      addNextEmployee = false;
+      return employees;
+    }
+
+    //if all the values are provided, we push the "employee" object inside our "employees" array
+
+    if (firstName && lastName && salary) {
+      //converting salary to a number
+      salary = Number(salary);
+
+      //for salary we added an extra layer of validation , if the salary is not a number we defaulted it to "0"
+      if (isNaN(salary)) {
+        salary = 0;
+      }
+
+      //in es6 and above if the key and value has a same name, we can use just one value to store the data instead of doing   { firstName: firstName, lastName: lastName, salary: salary}
+
+      //finally pushing the object in our array
+      employees.push({
+        firstName,
+        lastName,
+        salary,
+      });
+    }
+
+    //after pushing the values, we wanna check if user wants to add more staff
+    //if user confirms we keep the "addNextEmployee" value to true and loop again, else, we change it to false and exit the loop
+    if (confirm("Want to add more staff?")) {
+      addNextEmployee = true;
+    } else {
+      addNextEmployee = false;
+    }
+  }
+
+  //finally returning the array of employees upon the exit of loop
+  return employees;
 };
 
 // Display the average salary
