@@ -12,58 +12,64 @@ const collectEmployees = function () {
   let employees = [];
 
   while (addNextEmployee) {
-    // taking user input for firstname
-    let firstName = prompt("Enter first name");
+    //instead of getting all the inputs first and then validating, we are using instant validation, i.e if user does gives the firstname but cancels on the lastname input prompt, we want to exit the prompt and return the array itself
 
-    //if user cancels without giving any input, we change the "addNextEmployee" value to false and return the empty array to prevent the error when the other function tries to loop over the array
+    let firstName = prompt("Enter first name");
     if (!firstName) {
-      addNextEmployee = false;
       return employees;
     }
 
     let lastName = prompt("Enter last name");
     if (!lastName) {
-      addNextEmployee = false;
-      return employees;
-    }
-    let salary = prompt("Enter the salary");
-    if (!salary) {
-      addNextEmployee = false;
       return employees;
     }
 
-    //if all the values are provided, we push the "employee" object inside our "employees" array
+    //adding extra layer of check for salary as its value can be "string" or "non=negative"
 
-    if (firstName && lastName && salary) {
-      //converting salary to a number
-      salary = Number(salary);
+    let salary;
+    while (true) {
+      // Prompt for salary until a valid non-negative number is provided
+      let salaryInput = prompt("Enter the salary");
 
-      //for salary we added an extra layer of validation , if the salary is not a number we defaulted it to "0"
-      if (isNaN(salary)) {
-        salary = 0;
+      //if input is not given, we simply return
+      if (!salaryInput) {
+        return employees;
       }
 
-      //in es6 and above if the key and value has a same name, we can use just one value to store the data instead of doing   { firstName: firstName, lastName: lastName, salary: salary}
+      //if we have input, we change it to a number and check for "isNan" fucntion, if true, we can assume that we recived a non number value so we default the salary to 0
+      salary = Number(salaryInput);
+      if (isNaN(salary)) {
+        salary = 0;
+        break;
+      }
 
-      //finally pushing the object in our array
-      employees.push({
-        firstName,
-        lastName,
-        salary,
-      });
+      //if salary is negative, we wanna alert the user that it is a negative value and give them the chance to input the salary again and go validation check again
+      if (salary < 0) {
+        alert("Enter non negative number for salary");
+        continue;
+      }
+
+      //if its either "non-negative" and "positive" we break out from the loop and add it to the array
+      break;
     }
 
-    //after pushing the values, we wanna check if user wants to add more staff
-    //if user confirms we keep the "addNextEmployee" value to true and loop again, else, we change it to false and exit the loop
-    if (confirm("Want to add more staff?")) {
+    //pushing the object in the array
+    employees.push({
+      firstName,
+      lastName,
+      salary,
+    });
+
+    //after pushing the object, we ask if we wanna add more
+    if (confirm("Do you want to add more staff?")) {
+      //if yes, we continue through the main loop of input again
       addNextEmployee = true;
     } else {
+      //if no, we simply exit the main loop, turn the flag "addNextEmployee" false and return the employees array
       addNextEmployee = false;
+      return employees;
     }
   }
-
-  //finally returning the array of employees upon the exit of loop
-  return employees;
 };
 
 // Display the average salary
